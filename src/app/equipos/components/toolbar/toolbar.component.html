@@ -1,0 +1,20 @@
+<mat-toolbar class="league-toolbar">
+  <img src="assets/imagenes/sofifa1.jpg" alt="sofifa" class="header-image">
+  <div class="title-container">
+    <a class="title" routerLink="equipo" routerLinkActive="active">Teams</a>
+    <a class="subtitle" routerLink="jugadores" routerLinkActive="active">Players</a>
+  </div>
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>settings</mat-icon>
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item>Ajustes 1</button>
+    <button mat-menu-item>Ajustes 2</button>
+    <button mat-menu-item>Ajustes 3</button>
+  </mat-menu>
+  <mat-icon class="icon">light_mode</mat-icon>
+</mat-toolbar>
+
+<div class="titulo"><h3>{{ titulo }}</h3></div>

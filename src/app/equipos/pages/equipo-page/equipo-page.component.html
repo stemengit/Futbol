@@ -1,24 +1,11 @@
-<mat-card class="league-card">
-  <mat-card-header>
-    <mat-card-title>La Liga</mat-card-title>
-    <mat-card-subtitle>Equipos</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
+<app-toolbar></app-toolbar>
 
-<table class="table" mat-table>
-<mat-list>
-  <ng-container *ngFor="let team of teams">
-    <mat-list-item>
-      <img matListAvatar [src]="team.shield" alt="Shield" class="team-shield">
-      <div class="team-details">
-        <div class="team-name">{{ team.nameShow }}</div>
-        <div class="team-short_name">{{ team.short_name }}</div>
-        <div class="team-flag-container">
-          <img [src]="team.flag" alt="Flag" class="team-flag">
-        </div>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-  </ng-container>
-</mat-list>
-
+<div class="main-content">
+  <div class="sidebar">
+    <h6>Search</h6>
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

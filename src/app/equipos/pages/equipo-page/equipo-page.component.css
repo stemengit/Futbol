@@ -1,45 +1,19 @@
-.table{
-  border: 2px solid black;
-  border-radius: 5px;
-  margin: 30px;
-  width: 500px;
 
-}
-
-.team-shield {
-  width: 40px;
-  height: 40px;
-  margin-top: px;
-}
-
-.team-flag {
-  width: 30px;
-  height: 20px;
-  margin-left: 10px;
-}
-
-.team-details {
+.main-content {
   display: flex;
-  align-items: center;
-  margin-left: 10px;
-}
-
-.team-name {
-  font-size: 16px;
-  font-weight: bold;
-  color: rgb(92, 92, 92);
-  margin-right: 10px;
-}
-
-.team-flag-container {
   flex: 1;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
-mat-list-item {
-  padding: 10px 0;
-  align-items: center;
+.sidebar {
+  width: 250px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
-mat-divider {
-  margin: 0;
+.content {
+  flex: 1;
+  padding: 20px;
 }
+

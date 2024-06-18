@@ -1,0 +1,65 @@
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.league-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid #8b8b8b;
+  box-shadow: 0 2px 4px rgba(31, 31, 31, 0.4);
+  margin-bottom: 10px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.title, .subtitle {
+  font-size: 1.25rem;
+  margin-right: 10px;
+  margin: 8px;
+  text-decoration: none;
+  outline: none;
+  color: black;
+}
+
+
+.spacer {
+  flex: 1;
+}
+
+.header-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 100px;
+}
+
+.icon{
+  margin-right: 100px;
+}
+
+button[mat-icon-button] {
+  display: flex;
+  align-items: center;
+  margin-right: 6px;
+}
+
+.active{
+  color: rgb(52, 201, 23);
+}
+
+.titulo{
+  margin-left: 100px;
+  margin-top: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+

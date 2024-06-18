@@ -1,0 +1,52 @@
+.name-container {
+  display: flex;
+  align-items: center;
+}
+
+.player-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.rating {
+  border: 1px solid;
+  padding: 2px 5px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+}
+
+.rating-excellent {
+  border-color: #27a700;
+  background-color: #00ff00;
+}
+
+.rating-great {
+  border-color: #00cc00;
+  background-color: #93ff93;
+}
+
+.rating-good {
+  border-color: #009900;
+  background-color: #cfffcf;
+}
+
+.rating-average {
+  border-color: #ffcc00;
+  background-color: #ffff99;
+}
+
+.rating-poor {
+  border-color: #ff0000;
+  background-color: #ffcccc;
+}
+
+.mat-cell {
+  vertical-align: middle;
+}
+
+.mat-header-cell {
+  vertical-align: middle;
+}
