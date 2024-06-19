@@ -1,0 +1,20 @@
+<div class="podium-div">
+<h3 class="podium"><strong>Podium</strong></h3>
+</div>
+<div class="top-players-container">
+  <div class="player-card" *ngFor="let player of topPlayers">
+    <div class="player-image-container">
+      <img [src]="player | playerImage" alt="Image" class="player-image">
+    </div>
+    <div class="player-info">
+      <div class="player-name">{{ player.nick }}</div>
+      <div class="player-country">{{ player.CountryCode }}</div>
+      <div class="player-role-number">
+        <span [ngClass]="getRole(player.role).class"><strong>{{ getRole(player.role).text }}</strong></span> ({{
+        player.squadNumber }})
+      </div>
+      <div class="player-height-weight">Height: {{ player.height }} cm | Weight: {{ player.weight }} kg</div>
+      <span class="rating" [ngClass]="getRatingColor(player.rating)"> {{ player.rating }}</span>
+    </div>
+  </div>
+</div>

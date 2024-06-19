@@ -6,7 +6,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EquipoModule } from './equipos/equipo.module';
+import { HomeModule } from './pages/home/home.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     BrowserAnimationsModule,
 
     AppRoutingModule,
-    EquipoModule,
+    HomeModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

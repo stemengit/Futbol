@@ -1,0 +1,95 @@
+.sidebar {
+  width: 250px;
+}
+
+.tabla-content {
+  overflow-y: auto;
+  max-height: 75vh;
+  width: 100%;
+}
+
+::ng-deep .mat-grid-tile-content{
+  align-items: start !important;
+}
+
+.mat-grid-tile{
+  margin: 0 !important;
+}
+
+.name-container {
+  display: flex;
+  align-items: center;
+}
+
+.player-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.rating {
+  border: 1px solid;
+  padding: 2px 5px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+}
+
+.rating-excellent {
+  border-color: #27a700;
+  background-color: #00ff00;
+}
+
+.rating-great {
+  border-color: #00cc00;
+  background-color: #93ff93;
+}
+
+.rating-good {
+  border-color: #009900;
+  background-color: #cfffcf;
+}
+
+.rating-average {
+  border-color: #ffcc00;
+  background-color: #ffff99;
+}
+
+.rating-poor {
+  border-color: #ff0000;
+  background-color: #ffcccc;
+}
+
+.role-por {
+  color: red;
+}
+
+.role-def {
+  color: orange;
+}
+
+.role-cen {
+  color: green;
+}
+
+.role-del {
+  color: blue;
+}
+
+.role-default {
+  color: black;
+}
+
+
+.mat-cell {
+  vertical-align: middle;
+}
+
+.mat-header-cell {
+  vertical-align: middle;
+}
+
+.azul-titulo {
+  color: rgb(44, 86, 201);
+}
