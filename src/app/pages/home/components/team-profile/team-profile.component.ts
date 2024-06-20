@@ -14,6 +14,14 @@ export class TeamComponent implements OnInit {
   public players: Player[] = [];
   displayedColumns: string[] = [ 'name', 'CountryCode', 'roleAndNumber', 'rating'];
   dataSource: Player[] = [];
+  ratings: number[] = [];
+  countries: string[] = [];
+  roles = [
+    { text: 'POR', class: 'role-por' },
+    { text: 'DEF', class: 'role-def' },
+    { text: 'CEN', class: 'role-cen' },
+    { text: 'DEL', class: 'role-del' }
+  ];
 
   constructor(
     private playerService: PlayerService,
@@ -28,13 +36,44 @@ export class TeamComponent implements OnInit {
       this.players = data;
       this.dataSource = this.players;
       console.log('Jugadores de 1 solo equipo:', this.players);
+      this.extractFilters(data);
     });
   }
 
-  OnSearchChange(searchValue: string):void {
+  extractFilters(players: Player[]): void {
+    this.ratings = [...new Set(this.players.map(player => player.rating))];
+    this.countries = [...new Set(players.map(player => player.CountryCode))];
+  }
+
+  OnSearchChangePlayer(searchValue: string):void {
     this.dataSource = this.players.filter(player =>
       player.nick.toLowerCase().includes(searchValue.toLowerCase())
     )
+  }
+
+  OnSearchChangeRating(searchRating: number): void {
+    this.dataSource = this.players.filter(player =>
+      player.rating === searchRating
+    );
+  }
+
+  OnSearchChangeRole(searchRole: string): void {
+    const roleMap: { [key: string]: number } = {
+        'POR': 1,
+        'DEF': 2,
+        'CEN': 3,
+        'DEL': 4
+    };
+    const roleNumber = roleMap[searchRole];
+    this.dataSource = this.players.filter(player =>
+      player.role === roleNumber
+    );
+  }
+
+  OnSearchChangeCountry(searchCountry: string): void {
+    this.dataSource = this.players.filter(player =>
+      player.CountryCode.toLowerCase().includes(searchCountry.toLowerCase())
+    );
   }
 
   getRole(role: number): { text: string, class: string } {

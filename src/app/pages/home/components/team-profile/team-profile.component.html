@@ -6,7 +6,15 @@
   <mat-grid-tile colspan="1" rowspan="1">
     <div class="sidebar">
       <h6>Search</h6>
-      <app-player-sidebar (searchEvent)="OnSearchChange($event )"></app-player-sidebar>
+      <app-player-sidebar
+      [ratings]="ratings"
+        [countries]="countries"
+        [roles]="roles"
+        (searchEvent)="OnSearchChangePlayer($event)"
+        (ratingChange)="OnSearchChangeRating($event)"
+        (countryChange)="OnSearchChangeCountry($event)"
+
+      ></app-player-sidebar>
     </div>
   </mat-grid-tile>
 
