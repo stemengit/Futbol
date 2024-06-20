@@ -1,6 +1,7 @@
 table {
   width: 40px;
   background-color: rgba(249, 249, 249, 0.76);
+  border: 1px solid black !important;
 }
 
 .team-shield {
@@ -23,3 +24,40 @@ table {
 .azul-titulo {
   color: rgb(44, 86, 201);
 }
+
+.sidebar {
+  width: 250px;
+}
+
+table {
+  border: 1px solid black !important;
+}
+
+.tabla-content {
+  overflow-y: auto;
+  max-height: 75vh;
+  width: 100%;
+}
+
+::ng-deep .mat-grid-tile-content{
+  align-items: start !important;
+}
+
+.mat-grid-tile{
+  margin: 0 !important;
+}
+
+.name-container {
+  display: flex;
+  align-items: center;
+}
+
+
+.mat-cell {
+  vertical-align: middle;
+}
+
+.mat-header-cell {
+  vertical-align: middle;
+}
+

@@ -22,4 +22,10 @@ export class TeamTableComponent implements OnInit {
       console.log(this.teams)
     });
   }
+
+  OnSearchChangeTeam(searchValue: string):void {
+    this.dataSource = this.teams.filter(team =>
+      team.nameShow.toLowerCase().includes(searchValue.toLowerCase())
+    )
+  }
 }

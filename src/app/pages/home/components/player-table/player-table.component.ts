@@ -26,6 +26,12 @@ export class PlayerTableComponent implements OnInit {
     });
   }
 
+  OnSearchChange(searchValue: string):void {
+    this.dataSource = this.players.filter(player =>
+      player.nick.toLowerCase().includes(searchValue.toLowerCase())
+    )
+  }
+
   getRole(role: number): { text: string, class: string } {
     const roleMap: { [key: number]: { text: string, class: string } } = {
       1: { text: 'POR', class: 'role-por' },

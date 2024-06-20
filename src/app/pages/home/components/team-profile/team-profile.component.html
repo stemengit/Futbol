@@ -6,7 +6,7 @@
   <mat-grid-tile colspan="1" rowspan="1">
     <div class="sidebar">
       <h6>Search</h6>
-      <app-sidebar></app-sidebar>
+      <app-player-sidebar (searchEvent)="OnSearchChange($event )"></app-player-sidebar>
     </div>
   </mat-grid-tile>
 
