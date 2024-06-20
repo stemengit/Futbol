@@ -16,6 +16,7 @@ export class SidebarComponent {
   @Output() ratingChange = new EventEmitter<number>();
   @Output() roleChange = new EventEmitter<string>();
   @Output() countryChange = new EventEmitter<string>();
+
   @Output() searchEvent = new EventEmitter<string>();
 
   public myForm: FormGroup;
@@ -45,6 +46,8 @@ export class SidebarComponent {
       const numericValue = parseFloat(value);
       if (!isNaN(numericValue)) {
         this.ratingChange.emit(numericValue);
+      } else {
+        this.ratingChange.emit(0);
       }
     });
 
@@ -62,20 +65,6 @@ export class SidebarComponent {
     const target = event.target as HTMLInputElement;
     const searchValue = target.value;
     this.searchEvent.emit(searchValue);
-  }
-
-  onSearchCountry(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    const searchValue = target.value;
-    this.countryChange.emit(searchValue.toLowerCase());
-  }
-
-  onSearchRating(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    const searchValue = parseFloat(target.value);
-    if (!isNaN(searchValue)) {
-      this.ratingChange.emit(searchValue);
-    }
   }
 
   private _filter(value: string, options: any[]): any[] {

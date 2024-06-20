@@ -8,9 +8,11 @@ import { Player } from '../../../../interfaces/jugadores.interface';
   styleUrls: ['./player-table.component.css']
 })
 export class PlayerTableComponent implements OnInit {
+
   public players: Player[] = [];
   displayedColumns: string[] = ['name', 'CountryCode', 'roleAndNumber', 'rating'];
   dataSource: Player[] = [];
+
   ratings: number[] = [];
   countries: string[] = [];
   roles = [
@@ -35,26 +37,43 @@ export class PlayerTableComponent implements OnInit {
   extractFilters(players: Player[]): void {
     this.ratings = [...new Set(this.players.map(player => player.rating))];
     this.countries = [...new Set(players.map(player => player.CountryCode))];
+    console.log('Extracted Ratings:', this.ratings);
+    console.log('Extracted Countries:', this.countries);
   }
 
   OnSearchChangeRating(searchRating: number): void {
+    console.log('Search Rating:', searchRating);
+
     this.dataSource = this.players.filter(player =>
       player.rating === searchRating
     );
+    console.log('Filtered Data:', this.dataSource);
   }
 
+
+
   OnSearchChangeRole(searchRole: string): void {
+    console.log('Search Role:', searchRole);
+
     const roleMap: { [key: string]: number } = {
-        'POR': 1,
-        'DEF': 2,
-        'CEN': 3,
-        'DEL': 4
+      'POR': 1,
+      'DEF': 2,
+      'CEN': 3,
+      'DEL': 4
     };
+
     const roleNumber = roleMap[searchRole];
-    this.dataSource = this.players.filter(player =>
-      player.role === roleNumber
-    );
+    if (roleNumber !== undefined) {
+      this.dataSource = this.players.filter(player =>
+        player.role === roleNumber
+      );
+    } else {
+      this.dataSource = this.players;
+    }
+    console.log('Filtered Data:', this.dataSource);
   }
+
+
 
   OnSearchChangeCountry(searchCountry: string): void {
     this.dataSource = this.players.filter(player =>
