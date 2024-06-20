@@ -1,6 +1,50 @@
 <p>
   <mat-form-field appearance="outline">
     <mat-label>Buscador</mat-label>
-    <input matInput placeholder="Busca tu Jugador" (input)="onSearchChangePlayer($event)">
+    <input matInput placeholder="Busca tu Jugador" (input)="onSearchPlayer($event)">
   </mat-form-field>
 </p>
+
+<h6>Selectores:</h6>
+
+<div class="scroll-container">
+  <form [formGroup]="myForm">
+    <p style="font-style: oblique;">Rating</p>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Rating</mat-label>
+        <input type="text" matInput [matAutocomplete]="ratingAuto" formControlName="rating">
+        <mat-autocomplete #ratingAuto="matAutocomplete">
+          <mat-option *ngFor="let rating of filteredRatings | async" [value]="rating">
+            {{ rating }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <p style="font-style: oblique;">Posición</p>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roles" [value]="role.text">
+            {{ role.text }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <p style="font-style: oblique;">Country</p>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <input type="text" matInput [matAutocomplete]="countryAuto" formControlName="country">
+        <mat-autocomplete #countryAuto="matAutocomplete">
+          <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+            {{ country }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

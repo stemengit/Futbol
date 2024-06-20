@@ -18,6 +18,7 @@ import { SidebarComponent } from './player-sidebar/player-sidebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TeamSidebarComponent } from './team-sidebar/team-sidebar.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { TeamSidebarComponent } from './team-sidebar/team-sidebar.component';
     CommonModule,
     MaterialModule,
     HomeRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class ComponentsModule { }

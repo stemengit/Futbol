@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlayerService } from '../../../../services/jugador.service';
 import { Player } from '../../../../interfaces/jugadores.interface';
-
 
 @Component({
   selector: 'app-player-table',
@@ -9,27 +8,64 @@ import { Player } from '../../../../interfaces/jugadores.interface';
   styleUrls: ['./player-table.component.css']
 })
 export class PlayerTableComponent implements OnInit {
-
   public players: Player[] = [];
-  displayedColumns: string[] = [ 'name', 'CountryCode', 'roleAndNumber', 'rating'];
+  displayedColumns: string[] = ['name', 'CountryCode', 'roleAndNumber', 'rating'];
   dataSource: Player[] = [];
+  ratings: number[] = [];
+  countries: string[] = [];
+  roles = [
+    { text: 'POR', class: 'role-por' },
+    { text: 'DEF', class: 'role-def' },
+    { text: 'CEN', class: 'role-cen' },
+    { text: 'DEL', class: 'role-del' }
+  ];
+  @ViewChild('selectorForm') myForm: any;
 
-  constructor(
-    private playerService: PlayerService,
-  ) {}
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
     this.playerService.getPlayers().subscribe(data => {
       console.log('Todos los jugadores:', data);
       this.players = data;
       this.dataSource = this.players;
+      this.extractFilters(data);
     });
   }
 
-  OnSearchChange(searchValue: string):void {
+  extractFilters(players: Player[]): void {
+    this.ratings = [...new Set(this.players.map(player => player.rating))];
+    this.countries = [...new Set(players.map(player => player.CountryCode))];
+  }
+
+  OnSearchChangeRating(searchRating: number): void {
+    this.dataSource = this.players.filter(player =>
+      player.rating === searchRating
+    );
+  }
+
+  OnSearchChangeRole(searchRole: string): void {
+    const roleMap: { [key: string]: number } = {
+        'POR': 1,
+        'DEF': 2,
+        'CEN': 3,
+        'DEL': 4
+    };
+    const roleNumber = roleMap[searchRole];
+    this.dataSource = this.players.filter(player =>
+      player.role === roleNumber
+    );
+  }
+
+  OnSearchChangeCountry(searchCountry: string): void {
+    this.dataSource = this.players.filter(player =>
+      player.CountryCode.toLowerCase().includes(searchCountry.toLowerCase())
+    );
+  }
+
+  OnSearchChangePlayer(searchValue: string): void {
     this.dataSource = this.players.filter(player =>
       player.nick.toLowerCase().includes(searchValue.toLowerCase())
-    )
+    );
   }
 
   getRole(role: number): { text: string, class: string } {
@@ -42,7 +78,6 @@ export class PlayerTableComponent implements OnInit {
 
     return roleMap[role] || { text: 'Role', class: 'role-default' };
   }
-
 
   getRatingColor(rating: number): string {
     if (rating >= 90) {
@@ -57,7 +92,4 @@ export class PlayerTableComponent implements OnInit {
       return 'rating-poor';
     }
   }
-
-  // FILTRO
-
 }

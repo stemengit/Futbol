@@ -1,3 +1,13 @@
  mat-form-field + mat-form-field {
   height: 30px !important;
 }
+
+.scroll-container {
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+

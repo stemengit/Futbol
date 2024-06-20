@@ -10,10 +10,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
   exports: [
+    MatAutocompleteModule,
     MatCardModule,
     MatFormFieldModule,
     MatGridListModule,
@@ -24,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }
