@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page.component';
 import { PlayerTableComponent } from './components/player-table/player-table.component';
 import { TeamTableComponent } from './components/team-table/team-table.component';
-import { TeamComponent } from './components/team-profile/team-profile.component';
+import { TeamProfileComponent } from './components/team-profile/team-profile.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     component: HomePageComponent,
     children: [
       { path: 'equipos',component: TeamTableComponent },
-      { path: 'equipos/equipo/:basealias', component: TeamComponent },
+      { path: 'equipos/equipo/:basealias', component: TeamProfileComponent },
       { path: 'jugadores', component: PlayerTableComponent },
       { path: '', redirectTo: 'equipos', pathMatch: 'full' },
       { path: '**', redirectTo: 'equipos' }

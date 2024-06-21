@@ -10,7 +10,7 @@ import { ShieldImagePipe } from '../../../pipes/shield-image.pipe';
 import { HomePageComponent } from '../home-page.component';
 import { PlayerTableComponent } from './player-table/player-table.component';
 import { PodiumComponent } from './team-profile/podium/podium.component';
-import { TeamComponent } from './team-profile/team-profile.component';
+import { TeamProfileComponent } from './team-profile/team-profile.component';
 import { TeamTableComponent } from './team-table/team-table.component';
 
 
@@ -26,7 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomePageComponent,
 
     PlayerTableComponent,
-    TeamComponent,
+    TeamProfileComponent,
     TeamTableComponent,
     PodiumComponent,
 

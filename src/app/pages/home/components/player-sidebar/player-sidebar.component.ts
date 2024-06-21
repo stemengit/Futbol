@@ -13,7 +13,10 @@ export class SidebarComponent {
   @Input() countries: string[] = [];
   @Input() roles: { text: string, class: string }[] = [];
 
-  @Output() ratingChange = new EventEmitter<number>();
+  // @Input() roles: { text: string, class: string, value: number }[] = [];
+
+
+  @Output() ratingChange = new EventEmitter<string>();
   @Output() roleChange = new EventEmitter<string>();
   @Output() countryChange = new EventEmitter<string>();
 
@@ -43,14 +46,8 @@ export class SidebarComponent {
     );
 
     this.myForm.get('rating')!.valueChanges.subscribe(value => {
-      const numericValue = parseFloat(value);
-      if (!isNaN(numericValue)) {
-        this.ratingChange.emit(numericValue);
-      } else {
-        this.ratingChange.emit(0);
-      }
+      this.ratingChange.emit(value);
     });
-
 
     this.myForm.get('role')!.valueChanges.subscribe(value => {
       this.roleChange.emit(value);
@@ -71,5 +68,4 @@ export class SidebarComponent {
     const filterValue = value.toLowerCase();
     return options.filter(option => option.toString().toLowerCase().includes(filterValue));
   }
-
 }

@@ -16,14 +16,21 @@ export class PlayerTableComponent implements OnInit {
   ratings: number[] = [];
   countries: string[] = [];
   roles = [
-    { text: 'POR', class: 'role-por' },
-    { text: 'DEF', class: 'role-def' },
-    { text: 'CEN', class: 'role-cen' },
-    { text: 'DEL', class: 'role-del' }
+    { text: 'All', class: 'role-all', value: 0 },
+    { text: 'POR', class: 'role-por', value: 1 },
+    { text: 'DEF', class: 'role-def', value: 2 },
+    { text: 'CEN', class: 'role-cen', value: 3 },
+    { text: 'DEL', class: 'role-del', value: 4 }
   ];
+
+
+  activeRating: string = '';
+  activeRole: string = '';
+  activeCountry: string = '';
+
   @ViewChild('selectorForm') myForm: any;
 
-  constructor(private playerService: PlayerService) {}
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
     this.playerService.getPlayers().subscribe(data => {
@@ -42,52 +49,39 @@ export class PlayerTableComponent implements OnInit {
     console.log('Extracted Countries:', this.countries);
   }
 
-  OnSearchChangeRating(searchRating: number): void {
-    console.log('Search Rating:', searchRating);
-
-    this.dataSource = this.players.filter(player =>
-      player.rating.toString() === searchRating.toString()
-    );
+  applyFilters(): void {
+    this.dataSource = this.players.filter(player => {
+      return (!this.activeRating || player.rating.toString() === this.activeRating) &&
+             (!this.activeRole || this.getRole(player.role).text === this.activeRole) &&
+             (!this.activeCountry || player.CountryCode.toLowerCase() === this.activeCountry.toLowerCase());
+    });
 
     console.log('Filtered Data:', this.dataSource);
-}
-
-
-
-OnSearchChangeRole(searchRole: string): void {
-  console.log('Search Role:', searchRole);
-
-  const roleMap: { [key: string]: number } = {
-      'POR': 1,
-      'DEF': 2,
-      'CEN': 3,
-      'DEL': 4
-  };
-
-  const roleNumber = roleMap[searchRole];
-  if (roleNumber !== undefined) {
-      this.dataSource = this.players.filter(player =>
-          player.role.toString() === roleNumber.toString()
-      );
-  } else {
-      this.dataSource = this.players;
   }
-  console.log('Filtered Data:', this.dataSource);
-}
 
+  OnSearchChangeRating(searchRating: string): void {
+    console.log('Search Rating:', searchRating);
+    this.activeRating = searchRating;
+    this.applyFilters();
+  }
 
-
+  OnSearchChangeRole(searchRole: string): void {
+    console.log('Search Role:', searchRole);
+    this.activeRole = searchRole;
+    this.applyFilters();
+  }
 
   OnSearchChangeCountry(searchCountry: string): void {
-    this.dataSource = this.players.filter(player =>
-      player.CountryCode.toLowerCase().includes(searchCountry.toLowerCase())
-    );
+    console.log('Search Country:', searchCountry);
+    this.activeCountry = searchCountry;
+    this.applyFilters();
   }
 
   OnSearchChangePlayer(searchValue: string): void {
     this.dataSource = this.players.filter(player =>
       player.nick.toLowerCase().includes(searchValue.toLowerCase())
     );
+    console.log('Filtered Data by Player Name:', this.dataSource);
   }
 
   getRole(role: number): { text: string, class: string } {
