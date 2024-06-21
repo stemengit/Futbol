@@ -37,6 +37,7 @@ export class PlayerTableComponent implements OnInit {
   extractFilters(players: Player[]): void {
     this.ratings = [...new Set(this.players.map(player => player.rating))];
     this.countries = [...new Set(players.map(player => player.CountryCode))];
+
     console.log('Extracted Ratings:', this.ratings);
     console.log('Extracted Countries:', this.countries);
   }
@@ -45,33 +46,35 @@ export class PlayerTableComponent implements OnInit {
     console.log('Search Rating:', searchRating);
 
     this.dataSource = this.players.filter(player =>
-      player.rating === searchRating
+      player.rating.toString() === searchRating.toString()
     );
+
     console.log('Filtered Data:', this.dataSource);
-  }
+}
 
 
 
-  OnSearchChangeRole(searchRole: string): void {
-    console.log('Search Role:', searchRole);
+OnSearchChangeRole(searchRole: string): void {
+  console.log('Search Role:', searchRole);
 
-    const roleMap: { [key: string]: number } = {
+  const roleMap: { [key: string]: number } = {
       'POR': 1,
       'DEF': 2,
       'CEN': 3,
       'DEL': 4
-    };
+  };
 
-    const roleNumber = roleMap[searchRole];
-    if (roleNumber !== undefined) {
+  const roleNumber = roleMap[searchRole];
+  if (roleNumber !== undefined) {
       this.dataSource = this.players.filter(player =>
-        player.role === roleNumber
+          player.role.toString() === roleNumber.toString()
       );
-    } else {
+  } else {
       this.dataSource = this.players;
-    }
-    console.log('Filtered Data:', this.dataSource);
   }
+  console.log('Filtered Data:', this.dataSource);
+}
+
 
 
 
