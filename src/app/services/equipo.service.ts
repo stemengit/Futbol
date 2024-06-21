@@ -19,13 +19,15 @@ export class TeamService {
   constructor(private http: HttpClient) { }
 
   getTeams(): Observable<Team[]> {
-    return this.http.get< {team: Team[] }>(this.baseUrl).pipe(
+    return this.http.get<{ team: Team[] }>(this.baseUrl).pipe(
       map(response => response.team)
-    )
+    );
   }
 
-  getTeamByAlias(basealias: string): Observable<Team> {
-    return this.http.get<Team>(`${this.baseUrl}/${basealias}`);
+  getTeamsByBaseAlias( basealias: string ): Observable<Team> {
+    return this.getTeams().pipe(
+      map( teams => teams.find(team => team.basealias === basealias)!)
+    )
   }
 
 

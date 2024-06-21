@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Player } from '../../../../interfaces/jugadores.interface';
 import { PlayerService } from '../../../../services/jugador.service';
 import { switchMap } from 'rxjs';
+import { TeamService } from '../../../../services/equipo.service';
+import { Team } from '../../../../interfaces/equipos.interfaces';
 
 @Component({
   selector: 'app-team-profile',
@@ -12,8 +14,10 @@ import { switchMap } from 'rxjs';
 export class TeamProfileComponent implements OnInit {
 
   public players: Player[] = [];
+  public teams: Team[] = [];
   displayedColumns: string[] = ['name', 'CountryCode', 'roleAndNumber', 'rating'];
-  dataSource: Player[] = [];
+  dataPlayerSource: Player[] = [];
+  dataTeamSource: Team[] = []
   ratings: number[] = [];
   countries: string[] = [];
   roles = [
@@ -29,7 +33,8 @@ export class TeamProfileComponent implements OnInit {
 
   constructor(
     private playerService: PlayerService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private teamService: TeamService
   ) { }
 
   ngOnInit(): void {
@@ -38,9 +43,18 @@ export class TeamProfileComponent implements OnInit {
         switchMap(({ basealias }) => this.playerService.getPlayersByTeam(basealias))
       ).subscribe(data => {
         this.players = data;
-        this.dataSource = this.players;
+        this.dataPlayerSource = this.players;
         console.log('Jugadores de 1 solo equipo:', this.players);
       });
+
+      this.activatedRoute.params
+      .pipe(
+      switchMap(({ basealias }) => this.teamService.getTeamsByBaseAlias(basealias)))
+      .subscribe(data => {
+              this.teams = [data];
+              this.dataTeamSource = this.teams;
+              console.log('Equipo por URL',this.teams)
+            });
   }
 
   getRole(role: number): { text: string, class: string } {

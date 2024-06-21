@@ -19,6 +19,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TeamSidebarComponent } from './team-sidebar/team-sidebar.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { BigShieldImagePipe } from '../../../pipes/big-shield-image.pipe';
 
 
 @NgModule({
@@ -29,13 +30,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     TeamProfileComponent,
     TeamTableComponent,
     PodiumComponent,
+    TeamSidebarComponent,
 
     SidebarComponent,
     ToolbarComponent,
 
+    BigShieldImagePipe,
     PlayerImagePipe,
     ShieldImagePipe,
-    TeamSidebarComponent,
 
   ],
   imports: [
