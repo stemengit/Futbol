@@ -11,9 +11,7 @@ export class SidebarComponent {
 
   @Input() ratings: number[] = [];
   @Input() countries: string[] = [];
-  @Input() roles: { text: string, class: string }[] = [];
-
-  // @Input() roles: { text: string, class: string, value: number }[] = [];
+  @Input() roles: { text: string, class: string, value: string }[] = [];
 
 
   @Output() ratingChange = new EventEmitter<string>();

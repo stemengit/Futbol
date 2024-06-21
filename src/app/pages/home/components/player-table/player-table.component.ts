@@ -16,11 +16,11 @@ export class PlayerTableComponent implements OnInit {
   ratings: number[] = [];
   countries: string[] = [];
   roles = [
-    { text: 'All', class: 'role-all', value: 0 },
-    { text: 'POR', class: 'role-por', value: 1 },
-    { text: 'DEF', class: 'role-def', value: 2 },
-    { text: 'CEN', class: 'role-cen', value: 3 },
-    { text: 'DEL', class: 'role-del', value: 4 }
+    { text: 'All', class: 'role-all', value: '' },
+    { text: 'POR', class: 'role-por', value: 'POR'},
+    { text: 'DEF', class: 'role-def', value: 'DEF'},
+    { text: 'CEN', class: 'role-cen', value: 'CEN'},
+    { text: 'DEL', class: 'role-del', value: 'DEL'}
   ];
 
 

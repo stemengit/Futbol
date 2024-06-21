@@ -1,20 +1,28 @@
-::ng-deep .mat-mdc-table{
+::ng-deep .mat-mdc-table {
   width: 100vh !important;
   min-width: 0 !important;
-  border: 1px solid black !important;
+  border: 1px solid lightslategray !important;
 }
 
 .tabla-content {
   max-height: 65vh;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
-.mat-header-row, .mat-header-cell {
-  position: sticky;
-  top: 0;
-  background-color: white;
-  z-index: 1;
+.tabla {
+  max-height: 10vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* tbody{ */
+
+  /* } */
+
+  /* th{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1
+  } */
 }
 
 .azul-titulo {
@@ -22,7 +30,7 @@
 }
 
 
-::ng-deep .mat-grid-tile-content{
+::ng-deep .mat-grid-tile-content {
   align-items: start !important;
 }
 
