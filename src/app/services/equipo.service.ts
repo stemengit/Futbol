@@ -9,24 +9,25 @@ import { CacheStore } from '../interfaces/cache-store.interface';
 })
 export class TeamService {
 
-  private baseUrl: string = 'http://localhost:3000/spain/teams';
+  // private baseUrl: string = 'http://localhost:3000/spain/teams';
 
-  public cacheStore: CacheStore = {
-    byTeam:   { term: '', teamsPlayers: [] },
+  // private baseUrl: string = 'https://football-42h8.onrender.com/competition/la_liga';
+  private baseUrl: string = 'https://football-42h8.onrender.com';
 
-  }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getTeams(): Observable<Team[]> {
-    return this.http.get<{ team: Team[] }>(this.baseUrl).pipe(
+    return this.http.get<{ team: Team[] }>(`${this.baseUrl}/competition/la_liga   `).pipe(
       map(response => response.team)
     );
   }
 
+
   getTeamsByBaseAlias( basealias: string ): Observable<Team> {
+    // console.log('Perfil',`${ this.baseUrl }/${ basealias }`)
     return this.getTeams().pipe(
-      map( teams => teams.find(team => team.basealias === basealias)!)
+      map( teams => teams.find(team => team.basealias === basealias)!),
     )
   }
 

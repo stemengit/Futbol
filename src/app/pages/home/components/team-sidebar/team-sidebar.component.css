@@ -1,3 +1,5 @@
-mat-form-field + mat-form-field {
-  height: 30px !important;
+
+
+mdc-notched-outline{
+  height: 20px !important;
 }
