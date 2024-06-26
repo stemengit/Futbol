@@ -9,16 +9,15 @@ import { CacheStore } from '../interfaces/cache-store.interface';
 })
 export class TeamService {
 
-  // private baseUrl: string = 'http://localhost:3000/spain/teams';
+  private baseUrl: string = 'http://localhost:3000';
 
-  // private baseUrl: string = 'https://football-42h8.onrender.com/competition/la_liga';
-  private baseUrl: string = 'https://football-42h8.onrender.com';
+  // private baseUrl: string = 'https://football-42h8.onrender.com';
 
 
   constructor(private http: HttpClient) {}
 
   getTeams(): Observable<Team[]> {
-    return this.http.get<{ team: Team[] }>(`${this.baseUrl}/competition/la_liga   `).pipe(
+    return this.http.get<{ team: Team[] }>(`${this.baseUrl}/competition/la_liga`).pipe(
       map(response => response.team)
     );
   }

@@ -62,19 +62,19 @@ export class PlayerTableComponent implements OnInit {
   OnSearchChangeRating(searchRating: string): void {
     console.log('Search Rating:', searchRating);
     this.activeRating = searchRating;
-    this.applyFilters();
+    // this.applyFilters();
   }
 
   OnSearchChangeRole(searchRole: string): void {
     console.log('Search Role:', searchRole);
     this.activeRole = searchRole;
-    this.applyFilters();
+    // this.applyFilters();
   }
 
   OnSearchChangeCountry(searchCountry: string): void {
     console.log('Search Country:', searchCountry);
     this.activeCountry = searchCountry;
-    this.applyFilters();
+    // this.applyFilters();
   }
 
   OnSearchChangePlayer(searchValue: string): void {

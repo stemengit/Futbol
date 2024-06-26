@@ -12,11 +12,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   exports: [
     MatAutocompleteModule,
+    MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatGridListModule,

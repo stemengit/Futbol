@@ -25,7 +25,7 @@
     <p style="font-style: oblique;">Posición</p>
     <div class="form-group">
       <mat-form-field>
-        <mat-label>Role</mat-label>
+        <!-- <mat-label>Role</mat-label> -->
         <mat-select formControlName="role">
           <mat-option *ngFor="let role of roles" [value]="role.value">
             {{ role.text }}
@@ -49,3 +49,5 @@
     </div>
   </form>
 </div>
+
+

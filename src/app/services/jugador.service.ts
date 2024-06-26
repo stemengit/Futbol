@@ -9,8 +9,8 @@ import { tap, map } from 'rxjs/operators';
 })
 export class PlayerService {
 
-  // private baseUrl: string = 'http://localhost:3000/spain/teams/players';
-  private baseUrl: string = 'https://football-42h8.onrender.com';
+  private baseUrl: string = 'http://localhost:3000';
+  // private baseUrl: string = 'https://football-42h8.onrender.com';
 
 
   constructor(private http: HttpClient) { }
