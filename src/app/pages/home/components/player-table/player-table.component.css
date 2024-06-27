@@ -4,11 +4,24 @@
 
 
 .tabla-content {
-  overflow-y: auto;
-  max-height: 75vh;
   width: 100%;
-  border: 1px solid black !important;
+  height: 79vh;
+  overflow-y: auto;
+  border: 1px solid lightgrey !important;
   
+}
+
+.tabla{
+  width: 100% !important;
+  border-collapse: collapse !important;
+
+}
+
+::ng-deep thead {
+  position: sticky !important;
+  top: 0 !important;
+  background: lavender !important;
+  z-index: 1 !important;
 }
 
 ::ng-deep .mat-grid-tile-content{

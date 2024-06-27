@@ -21,51 +21,51 @@
   </mat-grid-tile>
 
   <mat-grid-tile colspan="4" rowspan="1">
-    <table mat-table class="mat-elevation-z8 tabla" [dataSource]="dataPlayerSource">
-      <!-- <tbody> -->
+    <div class="tabla-content">
+      <table mat-table class="mat-elevation-z8 tabla" [dataSource]="dataPlayerSource">
+
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element">
-            <div class="name-container">
-              <img [src]="element | playerImage" alt="Image" class="player-image">
-              {{ element.nick }}
-            </div>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="CountryCode">
-          <th mat-header-cell *matHeaderCellDef class="azul-titulo"> País </th>
-          <td mat-cell *matCellDef="let element"> {{ element.CountryCode }} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="roleAndNumber">
-          <th mat-header-cell *matHeaderCellDef class="azul-titulo"> Role (Number) </th>
-          <td mat-cell *matCellDef="let element">
-            <div class="player-role-number">
-              <span [ngClass]="getRole(element.role).class">
-                {{ getRole(element.role).text }}
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="name-container">
+                <img [src]="element | playerImage" alt="Image" class="player-image">
+                {{ element.nick }}
+              </div>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="CountryCode">
+            <th mat-header-cell *matHeaderCellDef class="azul-titulo"> País </th>
+            <td mat-cell *matCellDef="let element"> {{ element.CountryCode }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="roleAndNumber">
+            <th mat-header-cell *matHeaderCellDef class="azul-titulo"> Role (Number) </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="player-role-number">
+                <span [ngClass]="getRole(element.role).class">
+                  {{ getRole(element.role).text }}
+                </span>
+                ({{ element.squadNumber }})
+              </div>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef class="azul-titulo"> Rating </th>
+            <td mat-cell *matCellDef="let element">
+              <span class="rating" [ngClass]="getRatingColor(element.rating)">
+                {{ element.rating }}
               </span>
-              ({{ element.squadNumber }})
-            </div>
-          </td>
-        </ng-container>
+            </td>
+          </ng-container>
 
-        <ng-container matColumnDef="rating">
-          <th mat-header-cell *matHeaderCellDef class="azul-titulo"> Rating </th>
-          <td mat-cell *matCellDef="let element">
-            <span class="rating" [ngClass]="getRatingColor(element.rating)">
-              {{ element.rating }}
-            </span>
-          </td>
-        </ng-container>
-      <!-- </tbody> -->
 
-      <!-- <thead> -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <!-- </thead> -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
 
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
   </mat-grid-tile>
 
 </mat-grid-list>

@@ -9,7 +9,7 @@ import { CacheStore } from '../interfaces/cache-store.interface';
 })
 export class TeamService {
 
-  private baseUrl: string = 'http://localhost:3000/spain/teams';
+  private baseUrl: string = 'https://football-42h8.onrender.com/';
 
   public cacheStore: CacheStore = {
     byTeam:   { term: '', teamsPlayers: [] },
@@ -19,7 +19,7 @@ export class TeamService {
   constructor(private http: HttpClient) { }
 
   getTeams(): Observable<Team[]> {
-    return this.http.get<{ team: Team[] }>(this.baseUrl).pipe(
+    return this.http.get<{ team: Team[] }>(this.baseUrl+'competition/la_liga').pipe(
       map(response => response.team)
     );
   }

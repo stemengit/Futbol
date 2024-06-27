@@ -1,8 +1,7 @@
-<mat-grid-list cols="4" rowHeight="75vh">
+<mat-grid-list cols="4" rowHeight="80vh">
   <mat-grid-tile colspan="1" rowspan="1">
-    <mat-grid-list cols="1" rowHeight="75vh">
       <div class="sidebar">
-        <h6>Search</h6>
+        <h6>Filtrar:</h6>
         <app-player-sidebar
         [ratings]="ratings"
         [countries]="countries"
@@ -14,10 +13,10 @@
         ></app-player-sidebar>
       </div>
       <br>
-    </mat-grid-list>
   </mat-grid-tile>
 
   <mat-grid-tile colspan="3" rowspan="1">
+
     <div class="tabla-content">
       <table mat-table class="mat-elevation-z8 tabla" [dataSource]="dataSource">
 
