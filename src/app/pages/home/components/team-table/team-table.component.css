@@ -3,6 +3,19 @@ table {
   background-color: rgba(249, 249, 249, 0.76);
 }
 
+.ordenar:hover{
+  font-size: small;
+  cursor: pointer;
+  color: rgb(81, 110, 192);
+
+}
+
+.ordenar:active{
+  font-size: 12px;
+  color: rgb(143, 160, 204);
+
+}
+
 .team-shield {
   width: 40px;
   height: 40px;
@@ -34,7 +47,7 @@ table {
   height: 79vh;
   overflow-y: auto;
   border: 1px solid lightgrey !important;
-  
+
 }
 
 .tabla{

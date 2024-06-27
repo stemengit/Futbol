@@ -81,5 +81,73 @@ export class TeamProfileComponent implements OnInit {
       return 'rating-poor';
     }
   }
+
+  isNameAsc: boolean = true;
+  isRatingAsc: boolean = true;
+  isCountryAsc: boolean = true;
+
+  roleOrder: string[] = ['POR', 'DEF', 'CEN', 'DEL']
+  isRoleAsc: boolean = true;
+
+
+  orderByName() {
+    this.isNameAsc = !this.isNameAsc;
+    const sortedData = this.dataPlayerSource.sort((a, b) => {
+      const nameA = a.nick.toLowerCase();
+      const nameB = b.nick.toLowerCase();
+      if (nameA < nameB) {
+        return this.isNameAsc ? -1 : 1;
+      }
+      if (nameA > nameB) {
+        return this.isNameAsc ? 1 : -1;
+      }
+      return 0;
+    });
+    this.dataPlayerSource = [...sortedData];
+  }
+
+  orderByRating() {
+    this.isRatingAsc = !this.isRatingAsc;
+    const sortedData = this.dataPlayerSource.sort((a, b) => {
+      return this.isRatingAsc ? a.rating - b.rating : b.rating - a.rating;
+    });
+    this.dataPlayerSource = [...sortedData];
+  }
+
+  orderByCountry() {
+    this.isCountryAsc = !this.isCountryAsc;
+    const sortedData = this.dataPlayerSource.sort((a, b) => {
+      const countryA = a.CountryCode.toLowerCase();
+      const countryB = b.CountryCode.toLowerCase();
+      if (countryA < countryB) {
+        return this.isCountryAsc ? -1 : 1;
+      }
+      if (countryA > countryB) {
+        return this.isCountryAsc ? 1 : -1;
+      }
+      return 0;
+    });
+    this.dataPlayerSource = [...sortedData];
+  }
+
+  orderByRole() {
+    this.isRoleAsc = !this.isRoleAsc;
+    const sortedData = this.dataPlayerSource.sort((a, b) => {
+      const roleA = this.getRole(a.role).text;
+      const roleB = this.getRole(b.role).text;
+      const roleAIndex = this.roleOrder.indexOf(roleA);
+      const roleBIndex = this.roleOrder.indexOf(roleB);
+
+      if (roleAIndex < roleBIndex) {
+        return this.isRoleAsc ? -1 : 1;
+      }
+      if (roleAIndex > roleBIndex) {
+        return this.isRoleAsc ? 1 : -1;
+      }
+      return 0;
+    });
+    this.dataPlayerSource = [...sortedData];
+  }
+
 }
 

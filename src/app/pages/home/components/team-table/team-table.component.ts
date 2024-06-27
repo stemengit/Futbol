@@ -28,4 +28,23 @@ export class TeamTableComponent implements OnInit {
       team.nameShow.toLowerCase().includes(searchValue.toLowerCase())
     )
   }
+
+  isNameAsc: boolean = true;
+
+  orderByName() {
+    this.isNameAsc = !this.isNameAsc;
+    const sortedData = this.dataSource.sort((a, b) => {
+      const nameA = a.nameShow.toLowerCase();
+      const nameB = b.nameShow.toLowerCase();
+      if (nameA < nameB) {
+        return this.isNameAsc ? -1 : 1;
+      }
+      if (nameA > nameB) {
+        return this.isNameAsc ? 1 : -1;
+      }
+      return 0;
+    });
+    this.dataSource = [...sortedData];
+  }
+
 }

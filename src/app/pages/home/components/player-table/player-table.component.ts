@@ -69,12 +69,6 @@ export class PlayerTableComponent implements OnInit {
     this.activeRating = filters.rating;
     this.activeRole = filters.role;
     this.activeCountry = filters.country;
-    // this.dataSource = this.players.filter(player =>{
-    // //   // player.nick.toLowerCase().includes(filters.name.toLowerCase())
-    // //   // if(filters.name.toLowerCase().indexOf(player.nick.toLowerCase())!= -1) return player;
-    // //   // return;
-    // // }
-    // // );
     this.searchName = filters.name;
     this.applyFilters();
   }
@@ -103,4 +97,74 @@ export class PlayerTableComponent implements OnInit {
       return 'rating-poor';
     }
   }
+
+  isNameAsc: boolean = true;
+  isRatingAsc: boolean = true;
+  isCountryAsc: boolean = true;
+
+  roleOrder: string[] = ['POR', 'DEF', 'CEN', 'DEL']
+  isRoleAsc: boolean = true;
+
+
+  orderByName() {
+    this.isNameAsc = !this.isNameAsc;
+    const sortedData = this.dataSource.sort((a, b) => {
+      const nameA = a.nick.toLowerCase();
+      const nameB = b.nick.toLowerCase();
+      if (nameA < nameB) {
+        return this.isNameAsc ? -1 : 1;
+      }
+      if (nameA > nameB) {
+        return this.isNameAsc ? 1 : -1;
+      }
+      return 0;
+    });
+    this.dataSource = [...sortedData];
+  }
+
+  orderByRating() {
+    this.isRatingAsc = !this.isRatingAsc;
+    const sortedData = this.dataSource.sort((a, b) => {
+      return this.isRatingAsc ? a.rating - b.rating : b.rating - a.rating;
+    });
+    this.dataSource = [...sortedData];
+  }
+
+  orderByCountry() {
+    this.isCountryAsc = !this.isCountryAsc;
+    const sortedData = this.dataSource.sort((a, b) => {
+      const countryA = a.CountryCode.toLowerCase();
+      const countryB = b.CountryCode.toLowerCase();
+      if (countryA < countryB) {
+        return this.isCountryAsc ? -1 : 1;
+      }
+      if (countryA > countryB) {
+        return this.isCountryAsc ? 1 : -1;
+      }
+      return 0;
+    });
+    this.dataSource = [...sortedData];
+  }
+
+  orderByRole() {
+    this.isRoleAsc = !this.isRoleAsc;
+    const sortedData = this.dataSource.sort((a, b) => {
+      const roleA = this.getRole(a.role).text;
+      const roleB = this.getRole(b.role).text;
+      const roleAIndex = this.roleOrder.indexOf(roleA);
+      const roleBIndex = this.roleOrder.indexOf(roleB);
+
+      if (roleAIndex < roleBIndex) {
+        return this.isRoleAsc ? -1 : 1;
+      }
+      if (roleAIndex > roleBIndex) {
+        return this.isRoleAsc ? 1 : -1;
+      }
+      return 0;
+    });
+    this.dataSource = [...sortedData];
+  }
+
+
+
 }

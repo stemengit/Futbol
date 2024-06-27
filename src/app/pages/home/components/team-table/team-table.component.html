@@ -22,12 +22,12 @@
 
 
         <ng-container matColumnDef="nameShow">
-          <th mat-header-cell *matHeaderCellDef class="azul-titulo"> Name </th>
+          <th mat-header-cell *matHeaderCellDef class="azul-titulo"><span class="ordenar" (click)="orderByName()">Name</span> </th>
           <td mat-cell *matCellDef="let element"> {{ element.nameShow }} </td>
         </ng-container>
 
         <ng-container matColumnDef="short_name">
-          <th mat-header-cell *matHeaderCellDef class="azul-titulo"> ShortName </th>
+          <th mat-header-cell *matHeaderCellDef class="azul-titulo">ShortName</th>
           <td mat-cell *matCellDef="let element"> {{ element.short_name }} </td>
         </ng-container>
 
