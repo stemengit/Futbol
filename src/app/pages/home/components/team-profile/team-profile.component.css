@@ -13,6 +13,17 @@
 .tabla{
   width: 100% !important;
   border-collapse: collapse !important;
+<<<<<<< HEAD
+}
+
+::ng-deep thead {
+  position: sticky !important;
+  top: 0 !important;
+  background: lavender !important;
+  z-index: 1 !important;
+=======
+
+>>>>>>> a88253a6a27785edd9e91d7276d5e968f2657672
 }
 
 ::ng-deep thead {
@@ -21,7 +32,6 @@
   background: lavender !important;
   z-index: 1 !important;
 }
-
 /* .tabla {
   max-height: 10vh;
   overflow-y: auto;
