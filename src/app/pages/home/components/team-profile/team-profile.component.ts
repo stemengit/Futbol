@@ -38,7 +38,6 @@ export class TeamProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.activatedRoute.params
       .pipe(
         switchMap(({ basealias }) => this.playerService.getPlayersByTeam(basealias))

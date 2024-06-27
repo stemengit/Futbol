@@ -17,16 +17,18 @@ export class PlayerTableComponent implements OnInit {
   countries: string[] = [];
   roles = [
     { text: 'All', class: 'role-all', value: '' },
-    { text: 'POR', class: 'role-por', value: 'POR'},
-    { text: 'DEF', class: 'role-def', value: 'DEF'},
-    { text: 'CEN', class: 'role-cen', value: 'CEN'},
-    { text: 'DEL', class: 'role-del', value: 'DEL'}
+    { text: 'POR', class: 'role-por', value: 'POR' },
+    { text: 'DEF', class: 'role-def', value: 'DEF' },
+    { text: 'CEN', class: 'role-cen', value: 'CEN' },
+    { text: 'DEL', class: 'role-del', value: 'DEL' }
   ];
 
 
   activeRating: string = '';
   activeRole: string = '';
   activeCountry: string = '';
+  searchName: string  = '';
+  noPlayersFound: boolean = false;
 
   @ViewChild('selectorForm') myForm: any;
 
@@ -52,36 +54,29 @@ export class PlayerTableComponent implements OnInit {
   applyFilters(): void {
     this.dataSource = this.players.filter(player => {
       return (!this.activeRating || player.rating.toString() === this.activeRating) &&
-             (!this.activeRole || this.getRole(player.role).text === this.activeRole) &&
-             (!this.activeCountry || player.CountryCode.toLowerCase() === this.activeCountry.toLowerCase());
+        (!this.activeRole || this.getRole(player.role).text === this.activeRole) &&
+        (!this.activeCountry || player.CountryCode.toLowerCase() === this.activeCountry.toLowerCase()) &&
+        (player.nick.toLowerCase().includes(this.searchName.toLowerCase()));
     });
+
+    this.noPlayersFound = this.dataSource.length === 0;
 
     console.log('Filtered Data:', this.dataSource);
   }
 
-  OnSearchChangeRating(searchRating: string): void {
-    console.log('Search Rating:', searchRating);
-    this.activeRating = searchRating;
-    // this.applyFilters();
-  }
-
-  OnSearchChangeRole(searchRole: string): void {
-    console.log('Search Role:', searchRole);
-    this.activeRole = searchRole;
-    // this.applyFilters();
-  }
-
-  OnSearchChangeCountry(searchCountry: string): void {
-    console.log('Search Country:', searchCountry);
-    this.activeCountry = searchCountry;
-    // this.applyFilters();
-  }
-
-  OnSearchChangePlayer(searchValue: string): void {
-    this.dataSource = this.players.filter(player =>
-      player.nick.toLowerCase().includes(searchValue.toLowerCase())
-    );
-    console.log('Filtered Data by Player Name:', this.dataSource);
+  setFilters(filters: { rating: string , role: string , country: string , name: string }) {
+    console.log('filtros',filters);
+    this.activeRating = filters.rating;
+    this.activeRole = filters.role;
+    this.activeCountry = filters.country;
+    // this.dataSource = this.players.filter(player =>{
+    // //   // player.nick.toLowerCase().includes(filters.name.toLowerCase())
+    // //   // if(filters.name.toLowerCase().indexOf(player.nick.toLowerCase())!= -1) return player;
+    // //   // return;
+    // // }
+    // // );
+    this.searchName = filters.name;
+    this.applyFilters();
   }
 
   getRole(role: number): { text: string, class: string } {

@@ -14,11 +14,11 @@ import { TeamProfileComponent } from './team-profile/team-profile.component';
 import { TeamTableComponent } from './team-table/team-table.component';
 
 
-import { SidebarComponent } from './player-sidebar/player-sidebar.component';
+import { SidebarComponent } from './player-table/player-sidebar/player-sidebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { TeamSidebarComponent } from './team-sidebar/team-sidebar.component';
+import { TeamSidebarComponent } from './team-table/team-sidebar/team-sidebar.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BigShieldImagePipe } from '../../../pipes/big-shield-image.pipe';
 
 
@@ -45,6 +45,7 @@ import { BigShieldImagePipe } from '../../../pipes/big-shield-image.pipe';
     MaterialModule,
     HomeRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class ComponentsModule { }
