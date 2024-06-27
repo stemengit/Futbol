@@ -27,6 +27,7 @@ export class TeamProfileComponent implements OnInit {
     { text: 'CEN', class: 'role-cen', value: 'CEN'},
     { text: 'DEL', class: 'role-del', value: 'DEL'}
   ];
+  isLoading: boolean = false;
 
   @ViewChild('selectorForm') myForm: any;
 
@@ -45,6 +46,7 @@ export class TeamProfileComponent implements OnInit {
         this.players = data;
         this.dataPlayerSource = this.players;
         console.log('Jugadores de 1 solo equipo:', this.players);
+        this.isLoading = true;
       });
 
       this.activatedRoute.params

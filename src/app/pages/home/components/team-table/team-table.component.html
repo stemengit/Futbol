@@ -8,6 +8,11 @@
 
   <mat-grid-tile colspan="3" rowspan="1">
     <div class="tabla-content">
+
+      <div *ngIf="noTeamFound" class="no-team-found">
+        <strong>No existe ningun equipo con este nombre!</strong>
+      </div>
+      <div *ngIf="!noTeamFound">
       <table mat-table class="mat-elevation-z8" [dataSource]="dataSource">
 
         <ng-container matColumnDef="shield">
@@ -40,6 +45,15 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       </table>
+
+      <div *ngIf="!isLoading" class="loading-container">
+        <img
+          src="assets/imagenes/loader.svg"
+          class="loader-image"
+        />
+      </div>
+
+    </div>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

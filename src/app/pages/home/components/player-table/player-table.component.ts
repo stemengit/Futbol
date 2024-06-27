@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlayerService } from '../../../../services/jugador.service';
 import { Player } from '../../../../interfaces/jugadores.interface';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-player-table',
@@ -30,6 +31,8 @@ export class PlayerTableComponent implements OnInit {
   searchName: string  = '';
   noPlayersFound: boolean = false;
 
+  isLoading: boolean = false;
+
   @ViewChild('selectorForm') myForm: any;
 
   constructor(private playerService: PlayerService) { }
@@ -40,6 +43,7 @@ export class PlayerTableComponent implements OnInit {
       this.players = data;
       this.dataSource = this.players;
       this.extractFilters(data);
+      this.isLoading = true
     });
   }
 

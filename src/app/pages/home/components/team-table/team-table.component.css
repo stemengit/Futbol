@@ -16,6 +16,11 @@ table {
 
 }
 
+.no-team-found{
+  color: red;
+  font-size: 20px;;
+}
+
 .team-shield {
   width: 40px;
   height: 40px;
@@ -27,6 +32,24 @@ table {
   height: 20px;
   margin-left: 10px;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(29, 29, 29, 0.8);
+}
+
+.loader-image {
+  height: 500px;
+  width: 500px;
+}
+
 
 
 .team-flag-container {

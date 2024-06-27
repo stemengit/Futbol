@@ -13,6 +13,9 @@ export class TeamTableComponent implements OnInit {
   displayedColumns: string[] = ['shield', 'nameShow', 'flag', 'short_name'];
   dataSource: Team[] = [];
 
+  isLoading: boolean = false;
+  noTeamFound: boolean = false;
+
   constructor(private teamService: TeamService) {}
 
   ngOnInit(): void {
@@ -20,6 +23,7 @@ export class TeamTableComponent implements OnInit {
       this.teams = data;
       this.dataSource = this.teams;
       console.log(this.teams)
+      this.isLoading = true;
     });
   }
 
@@ -27,6 +31,7 @@ export class TeamTableComponent implements OnInit {
     this.dataSource = this.teams.filter(team =>
       team.nameShow.toLowerCase().includes(searchValue.toLowerCase())
     )
+    this.noTeamFound = this.dataSource.length === 0;
   }
 
   isNameAsc: boolean = true;

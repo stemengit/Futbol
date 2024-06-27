@@ -64,6 +64,13 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+      <div *ngIf="!isLoading" class="loading-container">
+        <img
+          src="assets/imagenes/loader.svg"
+          class="loader-image"
+        />
+      </div>
+
     </div>
 
   </mat-grid-tile>
